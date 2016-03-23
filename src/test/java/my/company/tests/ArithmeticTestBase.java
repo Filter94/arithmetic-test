@@ -19,13 +19,23 @@ import java.util.List;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptEngine;
 
+/**
+ * Base class for arithmetic tests.
+ * Implements tests parametrisation, execution and also attachment saving logic.
+ */
 @RunWith(Parameterized.class)
 @Description("This is an example test suite")
 public class ArithmeticTestBase {
-
+    // Epsilon for float point comparison
     private static final double EPSILON = 1e-10;
+    // Name of file with fixtures. Must be set by child class.
     static String FIXTURES_NAME = "";
 
+    /**
+     * Function for tests parametrisation
+     * @return Iterable with constructor parameters
+     * @throws Exception
+     */
     public static Iterable<Object[]> data() throws Exception{
         ArithmeticTestBase.saveTxtAttachment();
         URL dir_url = ClassLoader.getSystemResource(FIXTURES_NAME);
@@ -38,6 +48,13 @@ public class ArithmeticTestBase {
         return parametersArray;
     }
 
+    /**
+     * @param operand1 raw string with operand 1
+     * @param operand2 raw string with operand 2
+     * @param operation raw string with operation
+     * @param result raw string with expected result of test
+     * @throws Exception
+     */
     ArithmeticTestBase(String operand1,
                        String operand2,
                        String operation,
@@ -60,6 +77,11 @@ public class ArithmeticTestBase {
     @Parameter("Expected result")
     private double result;
 
+    /**
+     * Performs test. Saves text attachment if something goes wrong.
+     * Gets result by evaluating expression by js engine.
+     * @throws Exception
+     */
     public void performTest() throws Exception{
         try {
             String expression = Double.toString(operand1) + operation + Double.toString(operand2);
@@ -74,6 +96,11 @@ public class ArithmeticTestBase {
         }
     }
 
+    /**
+     * Saves text attachment for current test.
+     * @return Attachment file containment.
+     * @throws Exception
+     */
     @Attachment(value = "Sample fixture attachment", type = "text/plain")
     static public byte[] saveTxtAttachment() throws Exception {
         URL resource = ClassLoader.getSystemResource(FIXTURES_NAME);

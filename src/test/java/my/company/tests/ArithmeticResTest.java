@@ -8,6 +8,9 @@ import ru.yandex.qatools.allure.annotations.Title;
 
 public class ArithmeticResTest extends ArithmeticTestBase {
 
+    /**
+     * Performs tests for residual operation
+     */
     @Parameterized.Parameters()
     public static Iterable<Object[]> data() throws Exception {
         FIXTURES_NAME = "res_fixture.txt";

@@ -8,6 +8,9 @@ import ru.yandex.qatools.allure.annotations.Title;
 
 public class ArithmeticMulTest extends ArithmeticTestBase {
 
+    /**
+     * Performs tests for multiplication operation
+     */
     @Parameterized.Parameters()
     public static Iterable<Object[]> data() throws Exception {
         FIXTURES_NAME = "mul_fixture.txt";

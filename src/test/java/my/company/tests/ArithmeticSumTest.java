@@ -6,6 +6,9 @@ import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
 
+/**
+ * Performs tests for sum operation
+ */
 public class ArithmeticSumTest extends ArithmeticTestBase {
 
     @Parameterized.Parameters()

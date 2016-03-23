@@ -8,6 +8,9 @@ import ru.yandex.qatools.allure.annotations.Title;
 
 public class ArithmeticDivTest extends ArithmeticTestBase {
 
+    /**
+     * Performs tests for division operation
+     */
     @Parameterized.Parameters()
     public static Iterable<Object[]> data() throws Exception {
         FIXTURES_NAME = "div_fixture.txt";
