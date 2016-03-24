@@ -27,12 +27,12 @@ public class ArithmeticTestCase {
     // Name of file with fixtures. Must be set by child class.
     final private static String FIXTURES_NAME = "fixture.txt";
 
-    @Parameterized.Parameters()
     /**
      * Function for tests parametrisation
      * @return Iterable with constructor parameters
      * @throws Exception
      */
+    @Parameterized.Parameters()
     public static Iterable<Object[]> data() throws Exception{
         ArithmeticTestCase.saveTxtAttachment();
         URL dir_url = ClassLoader.getSystemResource(FIXTURES_NAME);
@@ -74,15 +74,15 @@ public class ArithmeticTestCase {
     @Parameter("Expected result")
     private double result;
 
-    @Title("Operation test")
-    @Features("Arithmetic operations support")
-    @Stories({"Support for arithmetic operations"})
-    @Test
     /**
      * Performs test. Saves text attachment if something goes wrong.
      * Gets result by evaluating expression by js engine.
      * @throws Exception
      */
+    @Title("Operation test")
+    @Features("Arithmetic operations support")
+    @Stories({"Support for arithmetic operations"})
+    @Test
     public void performTest() throws Exception{
         Double result;
         try {
