@@ -84,7 +84,7 @@ public class ArithmeticTestCase {
     @Stories({"Support for arithmetic operations"})
     @Test
     public void performTest() throws Exception{
-        Double result;
+        Double result = Double.NaN;
         try {
             switch(operation){
                 case "+":{
@@ -104,7 +104,7 @@ public class ArithmeticTestCase {
                     break;
                 }
                 default:{
-                    throw new Exception("Unknown operation");
+                    fail("Unknown operation");
                 }
             }
             Assert.assertEquals(this.result, result, ArithmeticTestCase.EPSILON);
